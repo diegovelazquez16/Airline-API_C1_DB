@@ -3,12 +3,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 
+const usersRoutes = require('./routes/users');
 const airplanesRoutes = require('./routes/airplanes');
 const flightsRoutes = require('./routes/flights');
-
+const authRoutes = require('./routes/auth'); 
+const passengersRoutes = require('./routes/passengers');  
+const dataBankRoutes = require('./routes/dataBank');   
 const app = express();
-const port = process.env.PORT || 4000;
 
+const port = process.env.PORT || 4000;
 const corsOptions = {
     origin: 'http://localhost:3000', // Cambia esto si tu frontend está en otro dominio
     methods: ['GET', 'POST'],          //Restos de la API de Horacio, tal vez sirva despues 
@@ -16,24 +19,24 @@ const corsOptions = {
     credentials: true
 };
 
-// Configuración de CORS
-app.use(cors(corsOptions));
-
-// Middleware para analizar los cuerpos de las solicitudes
-app.use(express.json());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Rutas API
+// Rutas
+app.use('/users', usersRoutes);
 app.use('/airplanes', airplanesRoutes);
 app.use('/flights', flightsRoutes);
+app.use('/auth', authRoutes); 
+app.use('/passengers', passengersRoutes);  
+app.use('/dataBank', dataBankRoutes); 
 
 // Ruta para manejar errores 404
 app.use((req, res) => {
-    res.status(404).send('Error 404: No encontrado');
+  res.status(404).send('Error 404: Not found');
 });
 
 // Iniciar el servidor
 app.listen(port, () => {
-    console.log(`Express Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
