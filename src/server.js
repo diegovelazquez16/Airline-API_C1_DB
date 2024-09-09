@@ -9,10 +9,13 @@ const flightsRoutes = require('./routes/flights');
 const authRoutes = require('./routes/auth'); 
 const passengersRoutes = require('./routes/passengers');  
 const dataBankRoutes = require('./routes/dataBank');   
-const quoteRoutes = require('./routes/book');
+const quoteRoutes = require('./routes/quoterout');
 const ticketRoutes = require('./routes/ticket');
+const payRouter = require('./routes/payrout');
+const quoteRouter = require('./routes/quoterout');
 
 const app = express();
+
 
 const port = process.env.PORT || 4000;
 const corsOptions = {
@@ -35,7 +38,8 @@ app.use('/passengers', passengersRoutes);
 app.use('/dataBank', dataBankRoutes); 
 app.use('/quote', quoteRoutes);
 app.use('/ticket', ticketRoutes);
-
+app.use('/pay,',payRouter) ;
+app.use('/quote',quoteRouter);
 // Ruta para manejar errores 404
 app.use((req, res) => {
   res.status(404).send('Error 404: Not found');

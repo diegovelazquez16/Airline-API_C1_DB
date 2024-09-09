@@ -65,6 +65,7 @@ exports.getTicketByPassenger = (req, res) => {
     });
 };
 
+/*
 exports.addTicket = (req, res) => {
     const { bookId, flightId, airplaneId, passengerId } = req.body;
 
@@ -79,7 +80,7 @@ exports.addTicket = (req, res) => {
         }
         res.status(201).json({ message: 'Ticket successfully created', ticketId: result.insertId });
     });
-};
+}; */
 
 /* Borrar un ticket por idticket
 exports.deleteTicket = (req, res) => {
