@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const airplanesRoutes = require('./routes/airplanes');
 const flightsRoutes = require('./routes/flights');
+const quoteRoutes = require('./routes/quote');
+const ticketRoutes = require('./routes/ticket');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -27,6 +29,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Rutas API
 app.use('/airplanes', airplanesRoutes);
 app.use('/flights', flightsRoutes);
+app.use('/quote', quoteRoutes);
+app.use('/ticket', ticketRoutes);
 
 // Ruta para manejar errores 404
 app.use((req, res) => {
