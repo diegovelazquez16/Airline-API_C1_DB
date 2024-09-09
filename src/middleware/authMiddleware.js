@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-// Middleware para verificar el token JWT
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -14,7 +13,7 @@ function authenticateToken(req, res, next) {
       return res.status(403).send('Invalid token');
     }
 
-    req.user = user; // Guardar la info del usuario decodificada en el request
+    req.user = user; 
     next();
   });
 }

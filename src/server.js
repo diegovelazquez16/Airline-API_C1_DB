@@ -9,6 +9,9 @@ const flightsRoutes = require('./routes/flights');
 const authRoutes = require('./routes/auth'); 
 const passengersRoutes = require('./routes/passengers');  
 const dataBankRoutes = require('./routes/dataBank');   
+const quoteRoutes = require('./routes/book');
+const ticketRoutes = require('./routes/ticket');
+
 const app = express();
 
 const port = process.env.PORT || 4000;
@@ -30,6 +33,8 @@ app.use('/flights', flightsRoutes);
 app.use('/auth', authRoutes); 
 app.use('/passengers', passengersRoutes);  
 app.use('/dataBank', dataBankRoutes); 
+app.use('/quote', quoteRoutes);
+app.use('/ticket', ticketRoutes);
 
 // Ruta para manejar errores 404
 app.use((req, res) => {
